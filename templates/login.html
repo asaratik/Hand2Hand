@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hand2Hand</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+   <div class="container login-page">
+      <form class="form-signin" method="POST" action="/login">
+        <h2 class="form-signin-heading text-center">User Login</h2>
+        <input style="margin-left:500px; width: 150px" type="username" name="username" class="form-control" placeholder="Username" required autofocus><br>
+        <input style="margin-left:500px; width: 150px" type="password" name="password" class="form-control" placeholder="Password" required><br>
+        <input type="hidden" value="{{ request.args.get('next', '') }}"/>
+        <button style="margin-left:500px; width: 150px" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+      <article class="flashes"; style="align-items: center">
+                        {%  with messages = get_flashed_messages() %}
+                            {%  if messages %}
+                                {%  for message in messages %}
+                                    {% if 'Success!' in message %}
+                                        <div class="col-md-1" ></div>
+                                        <div class="col-md-10" >
+                                        <div class="alert alert-success">{{ message }}</div>
+                                        </div>
+                                        <div class="col-md-1" ></div>
+                                    {% elif 'Error!' in message %}
+                                        <div class="col-md-1" ></div>
+                                        <div class="col-md-10" >
+                                        <div class="alert alert-danger">{{ message }}</div>
+                                        </div>
+                                        <div class="col-md-1" ></div>
+                                    {% else %}
+                                        <div class="col-md-1" ></div>
+                                        <div class="col-md-10" >
+                                        <div class="alert alert-info">{{ message }}</div>
+                                        </div>
+                                        <div class="col-md-1" ></div>
+                                    {%  endif %}
+                                {%  endfor %}
+                            {%  endif %}
+                        {%  endwith %}
+                    </article>
+    </div>
+</body>
+</html>
+
