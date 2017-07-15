@@ -13,6 +13,7 @@
         <h2 class="form-signin-heading text-center">User Login</h2>
         <input style="margin-left:500px; width: 150px" type="username" name="username" class="form-control" placeholder="Username" required autofocus><br>
         <input style="margin-left:500px; width: 150px" type="password" name="password" class="form-control" placeholder="Password" required><br>
+        <input type="hidden" value="{{ request.args.get('next', '') }}"/>
         <button style="margin-left:500px; width: 150px" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
       <article class="flashes"; style="align-items: center">
