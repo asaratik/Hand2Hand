@@ -5,6 +5,7 @@ import os
 app = Flask(__name__)
 
 users = ['USER1','USER2']
+drivers = ['DRIVER']
 
 app.secret_key = os.urandom(12)
 
@@ -108,7 +109,7 @@ def do_admin_login():
         session['user'] = request.form['username']
         session['logged_in'] = True
         return render_template("user_main.html")
-    elif request.form['username'] == 'Driver' and request.form['password'] == '12345':
+    elif request.form['username'].upper() in drivers and request.form['password'] == '12345':
         session['user'] = request.form['username']
         session['logged_in'] = True
         return render_template("driverIndex.html")    
