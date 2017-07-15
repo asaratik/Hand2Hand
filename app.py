@@ -54,6 +54,18 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/driverRequestsList',methods=['GET'])
+@login_required
+def driverRequestsList():
+    return render_template('driverRequestsList.html')
+
+
+@app.route('/driverRequestsHistory',methods=['GET'])
+@login_required
+def driverRequestsHistory():
+    return render_template('driverRequestsHistory.html')
+
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -75,11 +87,7 @@ def favicon():
 
 @app.route('/login', methods=['POST'])
 def do_admin_login():
-    if request.form['username'] == 'User1' and request.form['password'] == '12345':
-        session['user'] = request.form['username']
-        session['logged_in'] = True
-        return render_template("user_main.html")
-    elif request.form['username'] == 'User2' and request.form['password'] == '12345':
+    if request.form['username'] in users and request.form['password'] == '12345':
         session['user'] = request.form['username']
         session['logged_in'] = True
         return render_template("user_main.html")
