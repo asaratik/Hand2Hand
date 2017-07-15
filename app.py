@@ -44,6 +44,12 @@ def driverIndex():
     return render_template('driverIndex.html', data = data)
 
 
+@app.route('/driverArriveDeliver')
+def driverArriveDeliver():
+    data = []
+    return render_template('driverArriveDeliver.html', data = data)
+
+
 @app.route('/driverPickingUp')
 def driverPickingUp():
     data = []
