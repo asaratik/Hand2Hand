@@ -55,32 +55,27 @@
             center: uluru
         });
 
-        var contentString = '<div id="content">'+
-                '<div id="siteNotice">'+
-                '</div>'+
-                '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-                '<div id="bodyContent">'+
-                '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-                'sandstone rock formation in the southern part of the '+
-                'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-                'south west of the nearest large town, Alice Springs; 450&#160;km '+
-                '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-                'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-                'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-                'Aboriginal people of the area. It has many springs, waterholes, '+
-                'rock caves and ancient paintings. Uluru is listed as a World '+
-                'Heritage Site.</p>'+
-                '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-                'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-                '(last visited June 22, 2009).</p>'+
-                '</div>'+
-                '</div>';
+        var contentString = '<div class="row">'+
+                                    '<div class="col-xs-3">'+
+                                        '<img src="../img/users/tom.jpg">'+
+                                    '</div>'+
+                                    '<div class="col-xs-9">'+
+                                        '<h6><b>From:</b></h6>'+
+                                        '<h6>984 Belmont Terrace #06,</h6>'+
+                                        '<h6>Sunnyvale, CA 94086 </h6>'+
+                                        '<h6><b>To:</b></h6>'+
+                                        '<h6>36901 Spruce St,</h6>'+
+                                        '<h6>Newark, CA 94560 </h6>'+
+                                        '<a class="btn btn-sm btn-success" style="text-align:center;" href="./driverPickingUp.html">Accept</a>'+
+                                        '<a class="btn btn-sm btn-danger" style="text-align:center;" href="./driverRequestsList.html">Cancel</a>'
+                                    '</div>'+
+                                '</div>';
 
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
 
-        var iconBase = './img/';
+        var iconBase = '../img/';
         var icons = {
             navigation: {
                 icon: iconBase + 'navigation.png'
@@ -98,11 +93,11 @@
                 position: new google.maps.LatLng(37.392453, -122.040753),
                 type: 'navigation'
             }, {
-                position: new google.maps.LatLng(37.381140, -122.029603),
-                type: 'from'
-            }, {
                 position: new google.maps.LatLng(37.522423, -122.040153),
                 type: 'to'
+            }, {
+                position: new google.maps.LatLng(37.381140, -122.029603),
+                type: 'from'
             }
         ];
 
@@ -113,6 +108,7 @@
                 icon: icons[feature.type].icon,
                 map: map
             });
+            infowindow.open(map, marker);
         });
 
         directionsDisplay.setMap(map);
