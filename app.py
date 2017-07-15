@@ -8,6 +8,16 @@ def home():
     #page = request.args.get('page')
     data = []
     return render_template('index.html', data = data)
+
+@app.route('/user')
+def user():
+    return render_template('user.html')
+
+@app.route('/driver')
+def driver():
+        return render_template('driver.html')
+
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
     app.run(debug=True, host='localhost', port=4000)
+
