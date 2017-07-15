@@ -4,6 +4,8 @@ import os
 
 app = Flask(__name__)
 
+users = ['User1','User2']
+
 app.secret_key = os.urandom(12)
 
 app.config.update(
@@ -26,10 +28,12 @@ def login_page():
 @app.route('/', methods=['GET'])
 @login_required
 def login_get():
-    if session['username'] == 'User1' or session['username'] == 'User2':
+    if 'username' in session and session['username'] in users:
         return render_template("user_main.html")
-    else
+    elif 'username' in session:
         return render_template("driverIndex.html")
+    else:
+        login_page()
 
 
 @app.route('/send_package')
@@ -53,7 +57,7 @@ def index():
 @app.route('/logout')
 @login_required
 def logout():
-    session.pop('user', None)
+    session.pop('username', None)
     session.pop('logged_in', None)
     return login_page()
 
@@ -82,10 +86,9 @@ def do_admin_login():
     elif request.form['username'] == 'Driver' and request.form['password'] == '12345':
         session['user'] = request.form['username']
         session['logged_in'] = True
-        return render_template("driverIndex.html")
-    else:
-        flash('Error! The credentials are not valid, please verify!')
-        return redirect(url_for('login'))
+        return render_template("driverIndex.html")    
+    flash('Error! The credentials are not valid, please verify!')
+    return login_page()
 
 
 if __name__ == "__main__":
