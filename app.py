@@ -28,16 +28,19 @@ def login_page():
 def login_get():
     return redirect(url_for('index'))
 
+
 @app.route('/')
 @app.route('/index',methods=['GET'])
 @login_required
 def index():
     return render_template('index.html')
 
+
 @app.route('/user',methods=['GET'])
 @login_required
 def user():
     return render_template('user.html')
+
 
 @app.route('/logout')
 @login_required
