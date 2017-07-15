@@ -12,9 +12,11 @@
     <script type="application/javascript" src="./static/js/user_main.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    {#    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9QZUMFA4VpQn_YYVm6OatsYWr9B24pnA&libraries=places&callback=initMap"></script>#}
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9QZUMFA4VpQn_YYVm6OatsYWr9B24pnA&libraries=places&callback=initMap"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9QZUMFA4VpQn_YYVm6OatsYWr9B24pnA&libraries=places&callback=initialize"
-            async defer></script>
+         async defer></script>
+
     <script>
         $( function() {
             $( "#tabs" ).tabs();
@@ -26,6 +28,7 @@
     <script>
         var autocomplete, autocomplete1, autocomplete2, autocomplete3, autocomplete4, autocomplete5;
         function initialize() {
+
             autocomplete = new google.maps.places.Autocomplete(
                     /** @type {HTMLInputElement} */(document.getElementById('autocomplete')),
                     { types: ['geocode'] });
@@ -56,6 +59,7 @@
                     { types: ['geocode'] });
             google.maps.event.addListener(autocomplete5, 'place_changed', function() {
             });
+
         }
     </script>
 </head>
@@ -173,6 +177,7 @@
                                         <option>As soon as possible</option>
                                         <option>Anytime</option>
                                     </select>
+
                                 </div>
                             </div>
                             <div class="form-group row">
