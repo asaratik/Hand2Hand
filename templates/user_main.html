@@ -12,7 +12,9 @@
     <script type="application/javascript" src="./static/js/user_main.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-{#    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>#}
+{#    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9QZUMFA4VpQn_YYVm6OatsYWr9B24pnA&libraries=places&callback=initMap"></script>#}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9QZUMFA4VpQn_YYVm6OatsYWr9B24pnA&libraries=places&callback=initialize"
+         async defer></script>
     <script>
         $( function() {
             $( "#tabs" ).tabs();
@@ -21,8 +23,45 @@
             $( "#tabs1" ).tabs();
         } );
     </script>
+    <script>
+        var autocomplete, autocomplete1, autocomplete2, autocomplete3, autocomplete4, autocomplete5;
+        function initialize() {
+          autocomplete = new google.maps.places.Autocomplete(
+              /** @type {HTMLInputElement} */(document.getElementById('autocomplete')),
+              { types: ['geocode'] });
+          google.maps.event.addListener(autocomplete, 'place_changed', function() {
+          });
+        autocomplete1 = new google.maps.places.Autocomplete(
+              /** @type {HTMLInputElement} */(document.getElementById('autocomplete1')),
+              { types: ['geocode'] });
+          google.maps.event.addListener(autocomplete1, 'place_changed', function() {
+          });
+
+        autocomplete2 = new google.maps.places.Autocomplete(
+              /** @type {HTMLInputElement} */(document.getElementById('autocomplete2')),
+              { types: ['geocode'] });
+          google.maps.event.addListener(autocomplete2, 'place_changed', function() {
+          });
+
+            autocomplete3 = new google.maps.places.Autocomplete(
+              /** @type {HTMLInputElement} */(document.getElementById('autocomplete3')),
+              { types: ['geocode'] });
+          google.maps.event.addListener(autocomplete3, 'place_changed', function() {
+          });
+            autocomplete4 = new google.maps.places.Autocomplete(
+              /** @type {HTMLInputElement} */(document.getElementById('autocomplete4')),
+              { types: ['geocode'] });
+          google.maps.event.addListener(autocomplete4, 'place_changed', function() {
+          });
+            autocomplete5 = new google.maps.places.Autocomplete(
+              /** @type {HTMLInputElement} */(document.getElementById('autocomplete5')),
+              { types: ['geocode'] });
+          google.maps.event.addListener(autocomplete5, 'place_changed', function() {
+          });
+        }
+    </script>
 </head>
-<body id="main_page">
+<body id="main_page" onload="initialize()">
     <div class="container-fluid">
                 <!-- Navigation -->
         <nav class="navbar navbar-inverse bg-inverse">
@@ -51,15 +90,15 @@
                   </ul>
                   <div id="tabs-1">
                         <div class="form-group row">
-                          <label for="example-text-input" class="col-2 col-form-label">Pickup Location</label>
+                          <label for="example-text-input"  class="col-2 col-form-label">Pickup Location</label>
                           <div class="col-10">
-                            <input class="form-control" type="search" placeholder="Enter the pickup address" id="example-text-input">
+                            <input class="form-control" class="searchTextField" id="autocomplete" type="search" placeholder="Enter the pickup address">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="example-search-input" class="col-2 col-form-label">Destination</label>
                           <div class="col-10">
-                            <input class="form-control" type="search" placeholder="Enter the delivery address" id="example-search-input">
+                            <input class="form-control" class="searchTextField" id="autocomplete1" type="search" placeholder="Enter the delivery address" id="example-search-input">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -108,13 +147,13 @@
                             <div class="form-group row">
                               <label for="example-text-input" class="col-2 col-form-label">Pickup Location</label>
                               <div class="col-10">
-                                <input class="form-control" type="search" placeholder="Enter the pickup address" id="example-text-input">
+                                <input class="form-control" id="autocomplete2" type="search" placeholder="Enter the pickup address" id="example-text-input">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="example-search-input" class="col-2 col-form-label">Destination</label>
                               <div class="col-10">
-                                <input class="form-control" type="search" placeholder="Enter the delivery address" id="example-search-input">
+                                <input class="form-control" id="autocomplete3" type="search" placeholder="Enter the delivery address" id="example-search-input">
                               </div>
                             </div>
                             <div class="form-group row">
@@ -148,13 +187,13 @@
                             <div class="form-group row">
                               <label for="example-text-input" class="col-2 col-form-label">Pickup Location</label>
                               <div class="col-10">
-                                <input class="form-control" type="search" placeholder="Enter the pickup address" id="example-text-input">
+                                <input class="form-control" id="autocomplete4" type="search" placeholder="Enter the pickup address" id="example-text-input">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="example-search-input" class="col-2 col-form-label">Destination</label>
                               <div class="col-10">
-                                <input class="form-control" type="search" placeholder="Enter the delivery address" id="example-search-input">
+                                <input class="form-control" id="autocomplete5" type="search" placeholder="Enter the delivery address" id="example-search-input">
                               </div>
                             </div>
                             <div class="form-group row">
@@ -222,6 +261,5 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>
