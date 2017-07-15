@@ -23,7 +23,7 @@
 <nav class="navbar navbar-inverse bg-inverse">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="./driverIndex.html">DRIVER HOME</a>
+            <a class="navbar-brand" href="/driverIndex">DRIVER HOME</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav">
@@ -55,16 +55,16 @@
                                     '<a class="btn btn-lg btn-primary" style="width:80%;height:80%;text-align:center;padding-top:6vh;" href="#">Picked Ups</a>'+
                                 '</div>'+
                                 '<div class="col-xs-12 col-sm-12" style="min-height:18vh;display:table-cell;text-align:center;">'+
-                                    '<a class="btn btn-lg btn-success" style="width:80%;height:80%;padding-top:6vh;" href="./driverArriveDeliver.html">Delivered</a>'+
+                                    '<a class="btn btn-lg btn-success" style="width:80%;height:80%;padding-top:6vh;" href="/driverArriveDeliver">Delivered</a>'+
                                 '</div>'+
                                 '<div class="col-xs-12 col-sm-12" style="min-height:18vh;display:table-cell;text-align:center;">'+
-                                    '<a class="btn btn-lg btn-danger" style="width:80%;height:80%;padding-top:6vh;" href="./driverRequestsList.html">Back</a>'+
+                                    '<a class="btn btn-lg btn-danger" style="width:80%;height:80%;padding-top:6vh;" href="/driverRequestsList">Back</a>'+
                                 '</div>'+
                             '</div>';
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
-        var iconBase = '../img/';
+        var iconBase = '../static/img/';
         var icons = {
             navigation: {
                 icon: iconBase + 'navigation.png'

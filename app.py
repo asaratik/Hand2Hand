@@ -37,10 +37,6 @@ def login_get():
         login_page()
 
 
-@app.route('/send_package')
-def get_send_package_page():
-    data = []
-    return render_template('send_package.html', data = data)
 
 @app.route('/driverIndex')
 def driverIndex():
@@ -53,21 +49,12 @@ def driverPickingUp():
     data = []
     return render_template('driverPickingUp.html', data = data)
 
-
-@app.route('/get_package')
-def get_receive_package_page():
-    data = []
-    return render_template('get_package.html', data = data)
-
-
 @app.route('/driverRequestsList',methods=['GET'])
-@login_required
 def driverRequestsList():
     return render_template('driverRequestsList.html')
 
 
 @app.route('/driverRequestsHistory',methods=['GET'])
-@login_required
 def driverRequestsHistory():
     return render_template('driverRequestsHistory.html')
 
@@ -81,7 +68,6 @@ def logout():
 
 
 @app.errorhandler(404)
-@login_required
 def page_not_found(e):
     return render_template('404.html'), 404
 
@@ -92,13 +78,11 @@ def favicon():
 
 
 @app.route('/driverRequestInfo2',methods=['GET'])
-@login_required
 def driverRequestInfo2():
     return render_template('driverRequestInfo2.html')
 
 
 @app.route('/driverRequestInfo',methods=['GET'])
-@login_required
 def driverRequestInfo():
     return render_template('driverRequestInfo.html')
 
