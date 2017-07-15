@@ -9,13 +9,15 @@ def home():
     data = []
     return render_template('index.html', data = data)
 
-@app.route('/user')
-def user():
-    return render_template('user.html')
-
 @app.route('/driver')
 def driver():
         return render_template('driver.html')
+
+@app.route('/user')
+def user():
+    #page = request.args.get('page')
+    data = []
+    return render_template('user_main.html', data = data)
 
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
