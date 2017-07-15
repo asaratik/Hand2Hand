@@ -55,42 +55,21 @@
             center: uluru
         });
 
-        var contentString1 = '<a href="./driverRequestInfo.html"><div class="row">'+
-                                '<div class="col-xs-3">'+
-                                    '<img src="../img/users/tom.jpg">'+
+        var contentString = '<h1 style="text-align:center;margin-top:2vh;">Driver Control</h1>'+
+                            '<div class="row">'+
+                                '<div class="col-xs-12 col-sm-12" style="min-height:18vh;display:table-cell;text-align:center;margin-top:2vh;">'+
+                                    '<a class="btn btn-lg btn-primary" style="width:80%;height:80%;text-align:center;padding-top:6vh;" href="#">Picked Ups</a>'+
                                 '</div>'+
-                                '<div class="col-xs-9">'+
-                                    '<h6>User to User</h6>'+
-                                    '<h6><b>From:</b></h6>'+
-                                    '<h6>984 Belmont Terrace #06,</h6>'+
-                                    '<h6>Sunnyvale, CA 94086 </h6>'+
-                                    '<h6><b>To:</b></h6>'+
-                                    '<h6>36901 Spruce St,</h6>'+
-                                    '<h6>Newark, CA 94560 </h6>'+
+                                '<div class="col-xs-12 col-sm-12" style="min-height:18vh;display:table-cell;text-align:center;">'+
+                                    '<a class="btn btn-lg btn-success" style="width:80%;height:80%;padding-top:6vh;" href="./driverArriveDeliver.html">Delivered</a>'+
                                 '</div>'+
-                            '</div></a>';
+                                '<div class="col-xs-12 col-sm-12" style="min-height:18vh;display:table-cell;text-align:center;">'+
+                                    '<a class="btn btn-lg btn-danger" style="width:80%;height:80%;padding-top:6vh;" href="./driverRequestsList.html">Back</a>'+
+                                '</div>'+
+                            '</div>';
 
-        var infowindow1 = new google.maps.InfoWindow({
-            content: contentString1
-        });
-
-        var contentString2 = '<a href="./driverRequestInfo2.html"><div class="row">'+
-                '<div class="col-xs-3">'+
-                '<img src="../img/stores/target.jpg">'+
-                '</div>'+
-                '<div class="col-xs-9">'+
-                '<h6>Pickup from store</h6>'+
-                '<h6><b>From:</b></h6>'+
-                '<h6>298 W McKinley Ave,</h6>'+
-                '<h6>Sunnyvale, CA 94086 </h6>'+
-                '<h6><b>To:</b></h6>'+
-                '<h6>36901 Spruce St,</h6>'+
-                '<h6>Newark, CA 94560 </h6>'+
-                '</div>'+
-                '</div></a>';
-
-        var infowindow2 = new google.maps.InfoWindow({
-            content: contentString2
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
         });
 
         var iconBase = '../img/';
@@ -111,21 +90,13 @@
                 position: new google.maps.LatLng(37.392453, -122.040753),
                 type: 'navigation'
             }, {
-                position: new google.maps.LatLng(37.398140, -122.009603),
-                type: 'from'
+                position: new google.maps.LatLng(37.522423, -122.040153),
+                type: 'to'
             }, {
                 position: new google.maps.LatLng(37.381140, -122.029603),
                 type: 'from'
-            }, {
-                position: new google.maps.LatLng(37.379140, -122.019603),
-                type: 'from'
-            }, {
-                position: new google.maps.LatLng(37.409140, -122.059603),
-                type: 'from'
             }
         ];
-
-        var count = 1;
 
         // Create markers.
         features.forEach(function(feature) {
@@ -134,22 +105,30 @@
                 icon: icons[feature.type].icon,
                 map: map
             });
-            if(count % 2 == 1) {
-                marker.addListener('click', function () {
-                    infowindow1.open(map, marker);
-                });
-            } else {
-                marker.addListener('click', function () {
-                    infowindow2.open(map, marker);
-                });
-            }
-            count++;
+            infowindow.open(map, marker);
         });
 
         directionsDisplay.setMap(map);
 
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
     }
 
+    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+            origin: {lat: 37.381140, lng: -122.029603},  // .
+            destination: {lat: 37.522423, lng: -122.040153},  // .
+            // Note that Javascript allows us to access the constant
+            // using square brackets and a string value as its
+            // "property."
+            travelMode: google.maps.TravelMode['DRIVING']
+        }, function(response, status) {
+            if (status == 'OK') {
+                directionsDisplay.setDirections(response);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
 
 </script>
 </body>
