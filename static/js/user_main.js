@@ -19,7 +19,7 @@ function random() {
         $("#myModalLabel").text("Done");
         //$("#myModa2").show();
 
-    }, 5000);
+    }, 2000);
 }
 
 function acceptPackage() {
