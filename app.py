@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-users = ['User1','User2']
+users = ['USER1','USER2']
 
 app.secret_key = os.urandom(12)
 
@@ -41,17 +41,22 @@ def get_send_package_page():
     data = []
     return render_template('send_package.html', data = data)
 
+@app.route('/driverIndex')
+def driverIndex():
+    data = []
+    return render_template('driverIndex.html', data = data)
+
+
+@app.route('/driverPickingUp')
+def driverPickingUp():
+    data = []
+    return render_template('driverPickingUp.html', data = data)
+
 
 @app.route('/get_package')
 def get_receive_package_page():
     data = []
     return render_template('get_package.html', data = data)
-
-
-@app.route('/index',methods=['GET'])
-@login_required
-def index():
-    return render_template('index.html')
 
 
 @app.route('/driverRequestsList',methods=['GET'])
@@ -85,9 +90,21 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'ico/favicon.ico')
 
 
+@app.route('/driverRequestInfo2',methods=['GET'])
+@login_required
+def driverRequestInfo2():
+    return render_template('driverRequestInfo2.html')
+
+
+@app.route('/driverRequestInfo',methods=['GET'])
+@login_required
+def driverRequestInfo():
+    return render_template('driverRequestInfo.html')
+
+
 @app.route('/login', methods=['POST'])
 def do_admin_login():
-    if request.form['username'] in users and request.form['password'] == '12345':
+    if request.form['username'].upper() in users and request.form['password'] == '12345':
         session['user'] = request.form['username']
         session['logged_in'] = True
         return render_template("user_main.html")
