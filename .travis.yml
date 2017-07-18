@@ -10,3 +10,5 @@ deploy:
   provider: heroku
   api_key:
     secure: "d24b4694-51d2-4ab4-98b5-8b76672e3315"
+  app:
+    hand2handlh
