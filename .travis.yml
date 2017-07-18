@@ -9,4 +9,4 @@ script: py.test
 deploy:
   provider: heroku
   api_key:
-    secure: "08266cb8-9739-4288-9537-c610367baf32"
+    secure: "d24b4694-51d2-4ab4-98b5-8b76672e3315"
