@@ -1,0 +1,12 @@
+language: python
+python:
+  - "2.7"
+
+install: "pip install -r requirements.txt"
+
+script: pytest
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "08266cb8-9739-4288-9537-c610367baf32"
